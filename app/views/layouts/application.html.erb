@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="padding-top: 70px;">
+  <body>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -35,35 +35,45 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#">Register</a>
-            </li>
-            <li>
-              <a href="#">Login</a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Name
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">My Profile</a>
-                </li>
-                <li>
-                  <a href="#">My Courses</a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                  <a href="#">Logout</a>
-                </li>
-              </ul>
-            </li>
+            <% if !user_signed_in? %>
+              <li>
+                <%= link_to 'Register', new_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'Login', new_user_session_path %>
+              </li>
+            <% else %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email%>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'My Profile', edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <a href="#">My Courses</a>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
       </div>
     </nav>
     <div class="container">
+      <% if alert %>
+        <div class="alert alert-danger" role="alert"><%= alert %></div>
+      <% end %>
+      <% if notice %>
+        <div class="alert alert-success" role="alert"><%= notice %></div>
+      <% end %>
+
       <%= yield %>
     </div>
     <footer class="footer">
