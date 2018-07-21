@@ -1,0 +1,23 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+development:
+  mail_sender: 'noreply@coursease.com'
+  
+  mailgun_address: 'smtp.mailgun.org'
+  mailgun_port: '587'
+  mailgun_domain: 'sandbox360613ffe4384b56694d12c196b813dd.mailgun.org'
+  mailgun_user_name: 'postmaster@sandbox360613ffe4384b56694d12c196b813dd.mailgun.org'
+  mailgun_password: '2a48fd16705137b84980bdb1f40e51c8-643746f-cea9308c'
+
+  facebook_key: '1721595704790793'
+  facebook_secret: 'ff997dc1bbf923d46d10c266611ec86b'
