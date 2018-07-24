@@ -12,4 +12,41 @@ permit_params :title, :description, :price, :status, :image
 #   permitted
 # end
 
+index do
+  id_column
+  column :title
+  column :description
+  column :price
+  column :status
+  column :image do |course|
+    course.image.present? ? 'Yes' : 'No'
+  end
+  actions
+end
+
+form(){ |f|
+  f.inputs(){
+    f.input(:title)
+    f.input(:description)
+    f.input(:price)
+    f.input(:status, as: :select, collection: ['Active', 'Not Active'], include_blank: false)
+    f.input(:image, hint: course.image.present? ? image_tag(course.image, height: 300) : content_tag(:span, 'No Image'))
+  }
+  f.actions()
+}
+
+show(){
+  attributes_table(){
+    row :title
+    row :description
+    row(:price){
+      number_to_currency(course.price)
+    }
+    row :status
+    row(:image){
+      course.image.present? ? image_tag(course.image, height: 300) : content_tag(:span, 'No Image')
+    }
+  }
+}
+
 end
