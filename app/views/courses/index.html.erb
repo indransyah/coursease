@@ -1,0 +1,19 @@
+<h1>Courses</h1>
+
+<div class="row">
+  <% @courses.each do |course| %>
+    <%= link_to course do %>
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= image_tag course.image, class: 'img img-responsive' %>
+          </div>
+          <div class="panel-footer text-center">
+            <h4"><%= course.title %></h4>
+          </div>
+        </div>
+        <%# <img src="http://via.placeholder.com/600x300" alt="" class="img-responsive"> %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

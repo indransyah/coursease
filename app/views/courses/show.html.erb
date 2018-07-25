@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-3">
+    <div class="panel panel-default text-center">
+      <div class="panel-body">
+        <h2><%= number_to_currency @course.price %></h2>
+        <br/>
+        <button class="btn btn-default">Take Course</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= image_tag @course.image, class: 'img img-responsive' %>
+        <h1><%= @course.title %></h1>
+        <p><%= @course.description%></p>
+
+        <h2>Tasks</h2>
+        <ul class="list-group">
+          <% @tasks.each do |task| %>
+            <li class="list-group-item">
+              <%= link_to [@course, task] do %>
+                <%= task.title %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
